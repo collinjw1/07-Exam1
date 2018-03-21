@@ -2,8 +2,8 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  March 2018.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jonathan Collins.  March 2018.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -93,9 +93,22 @@ def problem3(rect, n, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function, TESTING each step as you go.
+    # Done: 2. Implement and test this function, TESTING each step as you go.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
+    rect.attach_to(window)
+    if rect.corner_1.y - rect.corner_2.y > 0:
+        radius = (rect.corner_1.y - rect.corner_2.y) * 0.5
+    else:
+        radius = (rect.corner_2.y - rect.corner_1.y) * 0.5
+    p1 = rect.get_lower_right_corner()
+    t=(2*(radius**2))**0.5
+    for k in range(n):
+        pn=rg.Point(p1.x+(t*k),p1.y+(t*k))
+        circle1=rg.Circle(pn,radius)
+        circle1.attach_to(window)
+        window.render()
+
 
 
 # -----------------------------------------------------------------------------
